@@ -23,6 +23,19 @@
                         </div>
                     </div>
                     <br>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="m-0">接口测试3</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="text" id="num1" class="form-control" placeholder="请输入num1值">
+                            <input type="text" id="num2" class="form-control" placeholder="请输入num2值">
+                            <h6 class="card-title">接口3返回数据如下：</h6>
+                            <p class="card-text" id="result"></p>
+                            <a href="#" class="btn btn-primary" onclick="requestAddTest()">发送请求3</a>
+                        </div>
+                    </div>
+                    <br>
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h5 class="m-0">接口测试2</h5>
@@ -69,6 +82,22 @@
             },
             error: function () {
                 $("#test2").html("接口异常，请联系管理员！");
+            }
+        });
+    }
+    function requestAddTest() {
+        var num1 = $("#num1").val();
+        var num2 = $("#num2").val();
+        $.ajax({
+            type: "GET",//方法类型
+            dataType: "text",//预期服务器返回的数据类型
+            url: "api/addTest?num1=" + num1+"&num2="+num2,
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                $("#result").html(JSON.stringify(result));
+            },
+            error: function () {
+                $("#result").html("接口异常，请联系管理员！");
             }
         });
     }

@@ -28,10 +28,12 @@ public class RequestTestController {
         user1.setId(1);
         user1.setName("十一");
         user1.setPassword("12121");
+        user1.setAge(18);
         User user2 = new User();
         user2.setId(2);
         user2.setName("十二");
         user2.setPassword("21212");
+        user2.setAge(17);
         User user3 = new User();
         user3.setId(3);
         user3.setName("十三");
@@ -42,4 +44,11 @@ public class RequestTestController {
         return users;
     }
 
+
+    @RequestMapping(value = "/addTest", method = RequestMethod.GET)
+    public Integer addTest(String num1, String num2) {
+        Integer value1 = Integer.parseInt(num1);
+        Integer value2 = Integer.parseInt(num2);
+        return value1 + value2;
+    }
 }
